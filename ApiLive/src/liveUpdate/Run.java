@@ -16,7 +16,7 @@ import org.json.JSONObject;
 public class Run {
     //essential URL structure is built using constants
     //*declarations
-    public static final String ACCESS_KEY="e8418a5b954a01c1543f7012dd112340",
+    public static final String ACCESS_KEY="<Your_Access_Key_Here",
             BASE_URL = "http://apilayer.net/api/",
             ENDPOINT = "live";
     
