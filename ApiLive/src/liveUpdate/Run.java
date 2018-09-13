@@ -1,11 +1,6 @@
 package liveUpdate;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.text.Format;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import org.apache.http.HttpEntity;
 import org.apache.http.ParseException;
 import org.apache.http.client.ClientProtocolException;
@@ -14,6 +9,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -58,7 +54,7 @@ public class Run {
             
             //parsed JSON Objects are accessed according to the JSON resonse's hierarchy, output strings are built
             
-            System.out.println("1 "+exchangeRates.getString("source") + " in GBP : " + exchangeRates.getJSONObject("quotes").getDouble("USDGBP") );
+            printFormatedObect(exchangeRates.toString());
             System.out.println("\n");
             response.close();
             
@@ -76,6 +72,16 @@ public class Run {
     public static void main(String[] args) throws IOException {
         sendLiveRequest();
         httpClient.close();
-        //new BufferedReader(new InputStreamReader(System.in)).readLine();
     }
+    
+    public static void printFormatedObect(String exchangeRate){
+        for (int x=0;x<exchangeRate.length();x++){
+            if (exchangeRate.charAt(x) == ','){
+                System.out.println("");
+            } else {
+                System.out.print(exchangeRate.charAt(x));
+            }
+        }
+    }
+    
 }
